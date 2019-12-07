@@ -10,3 +10,12 @@ A Java class loads the page into a headless Chrome browser, extracts the
 generated XHTML, writes it to a temporary file, and then runs that file
 through OpenHTMLToPDF. 
 
+OpenHTMLToPDF supports a subset of the CSS Paged Media spec, and the current 
+example demos pagination, footers and bookmarks.
+
+To run the project, download chromedriver to the project folder, or edit 
+the Java code to point to your local chromedriver.
+
+Sample output is in out/out.pdf.
+
+License: MIT
