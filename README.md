@@ -18,4 +18,6 @@ the Java code to point to your local chromedriver.
 
 Sample output is in out/out.pdf.
 
+[Sample Output](https://github.com/kaleguy/openhtmltopdf-dynamic-html/blob/master/out/out.pdf)
+
 License: MIT
