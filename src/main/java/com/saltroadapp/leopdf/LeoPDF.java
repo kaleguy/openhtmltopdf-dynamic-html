@@ -19,17 +19,6 @@ import static org.apache.commons.io.FileUtils.writeStringToFile;
 
 public class LeoPDF {
     public static void main(String[] args) {
-        OutputStream os = null;
-        try {
-            os = new FileOutputStream("./out/out.pdf");
-        }  catch (Exception e) {
-            System.out.println(e);
-            System.exit(1);
-        }
-        PdfRendererBuilder builder = new PdfRendererBuilder();
-        builder.useSVGDrawer(new BatikSVGDrawer()); // for charts
-
-        String headerHtml = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/>";
 
         // set up chrome
         String chromeDriverPath = "chromedriver";
@@ -61,6 +50,7 @@ public class LeoPDF {
         String html = driver.findElement(By.className("report")).getAttribute("outerHTML");
         String bookmarks = driver.findElement(By.className("bookmarks")).getAttribute("outerHTML");
         System.out.println(bookmarks);
+        String headerHtml = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"/>";
         html = headerHtml + bookmarks + "</head><body>" + html + "</body></html>";
 
         // Write the Html to a temp file
@@ -71,7 +61,16 @@ public class LeoPDF {
             System.out.println(e);
         }
 
-        // Run PDF Builder on the temp file
+        // Run PDF Builder on the temp file, write to out.pdf
+        OutputStream os = null;
+        try {
+            os = new FileOutputStream("./out/out.pdf");
+        }  catch (Exception e) {
+            System.out.println(e);
+            System.exit(1);
+        }
+        PdfRendererBuilder builder = new PdfRendererBuilder();
+        builder.useSVGDrawer(new BatikSVGDrawer()); // for charts
         builder.withFile(in);
         builder.toStream(os);
         try {
@@ -81,8 +80,5 @@ public class LeoPDF {
         }
         driver.close();
         driver.quit();
-
-
-
     }
 }
