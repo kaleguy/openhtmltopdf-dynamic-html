@@ -16,6 +16,7 @@ import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 
 import static org.apache.commons.io.FileUtils.writeStringToFile;
+import static org.apache.commons.io.FileUtils.copyFileToDirectory;
 
 public class LeoPDF {
     public static void main(String[] args) {
@@ -57,6 +58,15 @@ public class LeoPDF {
         File in = new File("in/temp.html");
         try {
             writeStringToFile(in, html);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        // copy the stylesheet to the "in" folder
+        File stylesheet = new File("reports/css/styles.css");
+        File inDir = new File("in");
+        try {
+            copyFileToDirectory(stylesheet, inDir);
         } catch (Exception e) {
             System.out.println(e);
         }
