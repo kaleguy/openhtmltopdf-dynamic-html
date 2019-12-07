@@ -21,23 +21,6 @@ h1 {
     margin-bottom: 30px;
     margin-top: 60px;
 }
-.data-table {
-    border: 1px solid #000;
-    border-collapse: collapse;
-}
-.data-table td {
-    border: 1px solid #ccc;
-    padding: 2px;
-}
-thead {display: table-header-group;}
-tfoot {display: table-header-group;}
-table { page-break-inside:auto }
-tr    { page-break-inside:avoid; page-break-after:auto }
-thead { display:table-header-group }
-tfoot { display:table-footer-group }
-tbody {
-    page-break-inside: avoid;
-}
 @media print
 {
     tbody { page-break-inside: avoid;}
@@ -45,6 +28,17 @@ tbody {
         display: table-header-group;
         margin-top: 100px;
     }
+}
+thead {display: table-header-group;}
+tfoot {display: table-header-group;}
+table { page-break-inside:auto }
+tr    { page-break-inside:avoid; page-break-after:auto }
+tbody {
+    page-break-inside: avoid;
+}
+td, th {
+    padding: 6px;
+    border: 0.5px solid #666;
 }
 table {
     -fs-table-paginate: paginate;
